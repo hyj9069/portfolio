@@ -1548,7 +1548,6 @@ body.section-dark .project-info {
 }
 
 .github-link-btn {
-  margin-left: auto;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -1566,7 +1565,6 @@ body.section-dark .project-info {
   background: var(--clr-accent);
   color: var(--clr-white);
   border-color: var(--clr-accent);
-  transform: translateY(-1px);
 }
 
 .project-title {
