@@ -48,7 +48,9 @@ export const skills = [
       { name: 'Web Accessibility', tier: 'tier-1' },
       { name: 'Responsive UI', tier: 'tier-1' },
       { name: 'Design System', tier: 'tier-2' },
-      { name: 'Figma', tier: 'tier-1' }
+      { name: 'Figma', tier: 'tier-1' },
+      { name: 'Photoshop', tier: 'tier-1' },
+      { name: 'Illustrator', tier: 'tier-2' }
     ]
   }
 ];
