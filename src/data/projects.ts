@@ -22,6 +22,17 @@ export const projects = [
     color: '#e8f3ff'
   },
   {
+    id: 11,
+    title: '오뚜기 식문화원',
+    description: '오뚜기 식문화원 아카이브 구축 및 반응형 웹 퍼블리싱. 웹 표준과 웹 접근성(WA) 기준에 맞춰 다양한 디바이스 환경을 고려해 UI를 개발했습니다.',
+    link: 'https://foodculture.otoki.com/',
+    category: ['web'],
+    featured: false,
+    tags: ['HTML5', 'CSS3', 'JavaScript'],
+    icon: 'fa-utensils',
+    color: '#fffbe6'
+  },
+  {
     id: 2,
     title: '국립한밭대학교 도서관',
     description: '한밭대학교 웹사이트 리뉴얼 퍼블리싱. 학생과 교직원을 위한 접근성 높은 UI 컴포넌트를 개발했습니다.',
