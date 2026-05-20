@@ -34,6 +34,13 @@ const Projects: React.FC = () => {
     return () => clearTimeout(timer);
   }, [activeFilter]);
 
+  const handleCardClick = (e: React.MouseEvent, url: string) => {
+    if ((e.target as HTMLElement).closest('.github-link-btn')) {
+      return;
+    }
+    window.open(url, '_blank', 'noopener,noreferrer');
+  };
+
   return (
     <section id="projects" className="projects section-padding relative">
       <div className="section-blob blob-top-left"></div>
@@ -65,11 +72,9 @@ const Projects: React.FC = () => {
 
         <div className="projects-grid">
           {filteredProjects.map((project, idx) => (
-            <a 
+            <div 
               key={project.id}
-              href={project.link} 
-              target="_blank" 
-              rel="noopener noreferrer" 
+              onClick={(e) => handleCardClick(e, project.link)}
               className={`project-card ${project.featured ? 'featured' : ''}`}
               data-category={project.category.join(' ')} 
               data-aos="fade-up"
@@ -87,6 +92,17 @@ const Projects: React.FC = () => {
                   <span className="project-num">0{idx + 1}</span>
                   {project.category.includes('web') && <span className="project-badge">Web</span>}
                   {project.category.includes('side') && <span className="project-badge badge-open">Toy</span>}
+                  {'github' in project && project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="github-link-btn"
+                      title="GitHub Repository"
+                    >
+                      <i className="fab fa-github"></i> Git
+                    </a>
+                  )}
                 </div>
                 <h3 className="project-title">{project.title}</h3>
                 <p className="project-desc">{project.description}</p>
@@ -96,7 +112,7 @@ const Projects: React.FC = () => {
                   ))}
                 </ul>
               </div>
-            </a>
+            </div>
           ))}
         </div>
       </div>
