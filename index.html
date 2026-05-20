@@ -5,7 +5,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Han Yeji — Frontend Developer</title>
     <meta name="description" content="프론트엔드 개발자 한예지의 포트폴리오. HTML, CSS, JS 퍼블리싱 경험을 바탕으로 React, Next.js 중심의 웹 경험을 만듭니다." />
-    
+    <!-- Theme initialization (runs immediately to prevent flash of light theme) -->
+    <script>
+      (function() {
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = savedTheme || (prefersDark ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+
+    <!-- FOUT (Flash of Unstyled Text) Prevention -->
+    <script>
+      (function() {
+        document.documentElement.classList.add('fonts-loading');
+        
+        // Timeout to show the page anyway if font loading is slow or fails
+        const timeoutId = setTimeout(function() {
+          document.documentElement.classList.remove('fonts-loading');
+        }, 1200);
+
+        if ('fonts' in document) {
+          document.fonts.ready.then(function() {
+            clearTimeout(timeoutId);
+            document.documentElement.classList.remove('fonts-loading');
+          }).catch(function() {
+            clearTimeout(timeoutId);
+            document.documentElement.classList.remove('fonts-loading');
+          });
+        } else {
+          clearTimeout(timeoutId);
+          document.documentElement.classList.remove('fonts-loading');
+        }
+      })();
+    </script>
+    <style>
+      /* Hide #root to prevent FOUT while keeping the background visible */
+      html.fonts-loading #root {
+        visibility: hidden;
+      }
+      /* Prevent light/white flash during styles loading by setting html background early */
+      html[data-theme="dark"] {
+        background-color: #0d0d10;
+      }
+      html[data-theme="light"] {
+        background-color: #f5f5f7;
+      }
+    </style>
+
     <!-- Google Fonts: Outfit, Syne, Playfair Display -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
